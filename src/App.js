@@ -2,6 +2,7 @@ import * as React from "react";
 import { Admin, Resource } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import authProvider from "./components/AuthProvider";
+import dataProvider from "./components/DataProvider";
 import Dashboard from "./components/Dashboard";
 import UserList from "./components/Users";
 import PostList, { PostEdit, PostCreate } from "./components/Posts";
@@ -10,7 +11,7 @@ import PostIcon from '@material-ui/icons/Book';
 
 // dataProvider prop - a function capable of fetching data from an API
 // Since there is no standard for data exchanges between computers, you will probably have to write a custom provider to connect react-admin to your own APIs
-const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
+// const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 function App() {
   return (
     <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
