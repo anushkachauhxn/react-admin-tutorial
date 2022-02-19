@@ -17,9 +17,15 @@ function PostList(props) {
     );
 }
 
+function PostTitle({ record }) {
+    return (
+        <span>Post {record ? `"${record.title}"` : ""}</span>
+    );
+}
+
 function PostEdit(props) {
     return (
-        <Edit {...props}>
+        <Edit title={<PostTitle />} {...props}>
             <SimpleForm>
                 <TextInput disabled source="id" />
                 <ReferenceInput source="userId" reference="users">
@@ -48,3 +54,10 @@ function PostCreate(props) {
 
 export default PostList;
 export { PostEdit, PostCreate };
+
+/* react-admin uses Optimistic Rendering 
+   When a user edits a record and hits the “Save” button, the UI shows a confirmation and displays the updated data before sending the update query to server. 
+   > Advantages: 
+   1) Immediate UI changes
+   2) 'Undo' option on confirmation message
+*/
