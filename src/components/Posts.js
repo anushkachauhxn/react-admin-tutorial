@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField, ReferenceField, EditButton, Edit, SimpleForm, ReferenceInput, SelectInput, TextInput } from 'react-admin';
+import { List, Datagrid, TextField, ReferenceField, EditButton, Edit, Create, SimpleForm, ReferenceInput, SelectInput, TextInput } from 'react-admin';
 
 function PostList(props) {
     return (
@@ -32,5 +32,19 @@ function PostEdit(props) {
     );
 }
 
+function PostCreate(props) {
+    return (
+        <Create {...props}>
+            <SimpleForm>
+                <ReferenceInput source="userId" reference="users">
+                    <SelectInput optionText="name" />
+                </ReferenceInput>
+                <TextInput source="title" />
+                <TextInput multiline source="body" />
+            </SimpleForm>
+        </Create>
+    );
+}
+
 export default PostList;
-export { PostEdit };
+export { PostEdit, PostCreate };
